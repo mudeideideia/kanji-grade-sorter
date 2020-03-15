@@ -1,0 +1,12 @@
+.kanji-button {
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+
+.kanji-button.-activated {
+    font-weight: bold;
+    color: tomato;
+}

@@ -1,0 +1,17 @@
+.main-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--blue2-color);
+    color: white;
+}
+
+.main-header > .hamburger-menu {
+    width: 35px;
+    height: 35px;
+}
+
+.main-header > .back-button{
+    height: 35px;
+    width: 35px;
+}

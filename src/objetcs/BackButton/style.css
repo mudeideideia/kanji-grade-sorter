@@ -1,0 +1,21 @@
+.back-button {
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.back-button > .button-icon::before {
+    content: '';
+    display: block;
+    border: 3px solid white;
+    border-radius: 3px;
+    transform: rotate(-45deg) translateX(-5px);
+}
+
+.back-button > .button-icon::after {
+    content: '';
+    display: block;
+    border: 3px solid white;
+    border-radius: 3px;
+    transform: rotate(45deg) translate(5px, 10px);
+}

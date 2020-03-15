@@ -1,0 +1,43 @@
+.hamburger-menu {
+    background-color: trasnparent;
+    text-decoration: none;
+}
+
+.hamburger-menu >
+    .hamburger-icon,
+    .hamburger-icon::before,
+    .hamburger-icon::after
+{
+    background-color: white;
+    border-radius: 5px;
+    height: 5px;
+}
+
+.hamburger-menu > .hamburger-icon{
+    display: block;
+    position: relative;
+    width: auto;
+    margin: 0 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 5px;
+}
+
+.hamburger-menu >
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.hamburger-menu > .hamburger-icon::before{
+    top: -10px;
+}
+
+
+.hamburger-menu > .hamburger-icon::after {
+    top: 10px;
+}

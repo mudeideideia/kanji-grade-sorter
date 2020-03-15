@@ -1,0 +1,9 @@
+.single-kanji {
+    font-size: xx-large;
+}
+
+
+.single-kanji.-activated {
+    font-weight: bold;
+    color: tomato;
+}
