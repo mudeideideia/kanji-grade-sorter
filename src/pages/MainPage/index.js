@@ -2,11 +2,10 @@ import React, {useState} from 'react'
 import './style.css'
 import MainHeader from '../../components/MainHeader'
 import ContentBox from '../../components/ContentBox'
-import KanjiButton from '../../components/kanjiButton'
+import KanjiButton from '../../objetcs/kanjiButton'
 import Wapper from '../../objetcs/Wrapper'
 
-const MainPage = () => {
-
+const MainPage = ({content}) => {    
 
     const [buttonList, setButtonList] = useState(
         {
@@ -22,16 +21,17 @@ const MainPage = () => {
         const New = {}
         setButtonList(old => {
             for (const key in old) { New[key] = old[key] }
-            New[grade] = old[grade] === true ? false : true
+            New[grade] = !old[grade]
             return New
         })        
     }
 
+    console.log(`MainPage:${content}`);
     return (
         <main className="main-page">
             <MainHeader />
             <Wapper className="box-wrapper">
-                <ContentBox buttonList = {buttonList} />
+                <ContentBox buttonList = {buttonList} content = { content }/>
             </Wapper>
             <Wapper className="button-wrapper">
                 { 
@@ -53,5 +53,3 @@ const MainPage = () => {
 }
 
 export default MainPage;
-
-// for (key in buttonList) {
