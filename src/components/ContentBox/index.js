@@ -1,76 +1,100 @@
-import React, { useReducer, useEffect} from 'react'
+import React, { useState } from 'react'
 import './style.css'
 import SingleKanji from '../../objetcs/SingleKanji'
+import KanjiButton from '../../objetcs/kanjiButton'
+import Wapper from '../../objetcs/Wrapper'
 
 
-const ContentBox = ({buttonList, content=[]}) => {
-
-    const kanjiList = content.map( elem => (
-            {
-                kanji: elem.kanji,
-                pos: elem.pos,
-                activated: buttonList[elem.grade],
-                grade: elem.grade
-            }
-        )
+const ContentBox = ({content=[]}) => {
+    const [buttonList, setButtonList] = useState( 
+        {
+            N5: false,
+            N4: false,
+            N3: false,
+            N2: false,
+            XX: false
+        }
     )
-    console.log(`ContentBox:${content[0]}`);
-    
 
-
-    const SingleActivation = (state, pos) => {
-        return state.map( elem => {
-            if(elem.pos === pos) {
-                return {
-                    kanji: elem.kanji,
-                    pos: pos,
-                    activated: !elem.activated,
-                    grade: elem.grade
-                } 
-            }
-            return elem
+    const updateButtonList = (grade) => {        
+        setButtonList( state => {
+            state[grade] = !state[grade]
+            return state
         })
     }
-    const groupActivation = () => {
-        return kanjiList.map( elem => (
+
+    const [state, setState] = useState(
+        content.map( elem => (
             {
                 kanji: elem.kanji,
                 pos: elem.pos,
-                activated: buttonList[elem.grade],
+                activated: false,
                 grade: elem.grade
-
             }
         ))
+    )
+
+    const handleKanjiClick = (pos) => {
+        setState(state => (
+            state.map( elem => {
+                if(elem.pos === pos) {
+                    return {
+                        kanji: elem.kanji,
+                        pos: pos,
+                        activated: !elem.activated,
+                        grade: elem.grade
+                    }
+                }
+                return elem
+            })
+        ))
+    }
+
+    const handleButtonClick = (grade) => {
+        updateButtonList(grade)
         
-    }
-    const reducer = (state, action) => {
-        switch (action.type) {
-            case 'single' :
-                return SingleActivation(state, action.pos)
-            case 'group' :
-                return groupActivation()
-            default:
-                throw new Error()
-        }
-    }
-    
-    const [state, dispatch] = useReducer(reducer, kanjiList)
-
-    useEffect(()=> { dispatch({ type: 'group'}) }, [buttonList])
-
-
-    const handleKanjiClick = (pos) => { dispatch({ type: 'single', pos: pos}) }
+        setState(state => (
+            state.map( elem => {
+                if(elem.grade === grade) {
+                    return {
+                        kanji: elem.kanji,
+                        pos: elem.pos,
+                        activated: buttonList[grade],
+                        grade: grade
+                    } 
+                }
+                return elem
+            })
+        ))
+    }  
 
     return (
-    <div className="content-box">{
-        state.map( obj => (
-            <SingleKanji 
+    <div className="content-box">
+        <Wapper className="text-wrapper">
+            {
+            state.map( obj => (
+                <SingleKanji 
                 key={obj.pos}
                 content={obj.kanji}
                 activated={obj.activated}
                 onClick={() => handleKanjiClick(obj.pos)}/>
-        ))
-        }
+                ))
+            }
+        </Wapper>
+        <Wapper className="button-wrapper">
+            { 
+                Object.keys(buttonList).map(grade => {
+                    return (
+                    <KanjiButton
+                        key={grade}
+                        text={grade}
+                        activated={buttonList[grade]}
+                        onClick={() => handleButtonClick(grade)}
+                    />
+                    )
+                })
+            }                       
+        </Wapper>
     </div>
     )
 }

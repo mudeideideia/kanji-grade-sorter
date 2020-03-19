@@ -1,4 +1,26 @@
 .content-box {
     background-color: #fff;
     height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100vw;
+    justify-content: space-between;
+}
+
+.content-box > .text-wrapper {
+    height: 600px;
+    padding-top: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    flex-basis: 80%;
+}
+
+.content-box > .button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 600px;
+    padding-right: 15px;
+    
 }
