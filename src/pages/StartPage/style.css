@@ -1,5 +1,53 @@
-.data-entrance {
-    width: 80vw;
-    height: 500px;
-    margin: auto;
+.start-page {
+    background-color: var(--black-color);
+    width: 100vw;
+    height: 70vh;
 }
+
+.start-page > .main-header {
+    height: 70px;
+}
+
+
+.start-page > .button-wrapper {
+    box-sizing: border-box;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background-color: var(--black-color);
+}
+
+
+.start-page > .text-wrapper {
+    padding-top: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    width: 80%;
+    height: 100%;
+}
+
+
+.text-wrapper > .editable-content {
+    font-size: x-large;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}    
+ 
+
+
+.go-button {
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.go-button > .button-icon::before {
+    color: var(--white-color);
+    font-family: sans-serif;
+    font-size: x-large;
+    content: 'GO';
+    font-weight: bold;
+    display: block;
+}
+

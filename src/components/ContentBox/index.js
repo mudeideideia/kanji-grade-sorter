@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './style.css'
 import SingleKanji from '../../objetcs/SingleKanji'
 import KanjiButton from '../../objetcs/kanjiButton'
-import Wapper from '../../objetcs/Wrapper'
+import Wrapper from '../../objetcs/Wrapper'
 
 
 const ContentBox = ({content=[]}) => {
@@ -70,7 +70,7 @@ const ContentBox = ({content=[]}) => {
 
     return (
     <div className="content-box">
-        <Wapper className="text-wrapper">
+        <Wrapper className="text-wrapper">
             {
             state.map( obj => (
                 <SingleKanji 
@@ -80,8 +80,8 @@ const ContentBox = ({content=[]}) => {
                 onClick={() => handleKanjiClick(obj.pos)}/>
                 ))
             }
-        </Wapper>
-        <Wapper className="button-wrapper">
+        </Wrapper>
+        <Wrapper className="button-wrapper">
             { 
                 Object.keys(buttonList).map(grade => {
                     return (
@@ -94,7 +94,7 @@ const ContentBox = ({content=[]}) => {
                     )
                 })
             }                       
-        </Wapper>
+        </Wrapper>
     </div>
     )
 }

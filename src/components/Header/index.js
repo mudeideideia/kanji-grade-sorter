@@ -2,17 +2,18 @@ import React from 'react'
 import './style.css'
 import HamburgerMenu from '../../objetcs/HamburgerMenu'
 import PageTitle from '../../objetcs/PageTitle'
-import BackButton from '../../objetcs/BackButton'
+import GoButton from '../../objetcs/GoButton'
 
-const MainHeader = () => {
+const Header = ({link}) => {
+    
     return (
         //
         <header className="main-header">
-            <BackButton />
+            <GoButton link={link} />           
             <PageTitle title={"Identificador de Kanjis"}/>
             <HamburgerMenu />
         </header>
     )
 }
 
-export default MainHeader;
+export default Header;
